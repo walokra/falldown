@@ -6,13 +6,14 @@
 Name:       harbour-falldown
 
 # >> macros
+%define __provides_exclude_from ^%{_datadir}/.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    My SailfishOS Application
+Summary:    Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly
 Version:    0.1
 Release:    1
 Group:      Applications/Games
@@ -22,9 +23,6 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-falldown.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   qt5-qtmultimedia
-Requires:   qt5-qtsensors
-Requires:   qt5-qtdeclarative-systeminfo
-Requires:   qt5-qtdeclarative-import-sensors
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
@@ -32,7 +30,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly with rhythmic music. Don’t get squashed!
 
 
 %prep

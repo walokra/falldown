@@ -21,7 +21,7 @@ import QtQuick 2.1
 import Sailfish.Silica 1.0
 
 import QtSensors 5.0
-import QtSystemInfo 5.0
+//import QtSystemInfo 5.0
 import QtMultimedia 5.0
 
 import Bacon2D 1.0
@@ -94,7 +94,7 @@ ApplicationWindow {
 
         currentScene: mainScene
 
-        ScreenSaver { screenSaverEnabled: !gameScene.running }
+//        ScreenSaver { screenSaverEnabled: !gameScene.running }
 
         Settings {
             id: settings
