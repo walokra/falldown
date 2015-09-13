@@ -1,0 +1,20 @@
+# Final packages
+RPMS/*
+
+# Build stuff
+build-*
+
+# Something Qt Creator generates
+debugsources.list
+documentation.list
+debugfiles.list
+debuglinks.list
+
+# object files, makefiles, environment-specific Creator settings
+*.o
+Makefile
+*.pro.user
+*.pro.user.*
+
+# Bacon2D
+qml/imports/*
