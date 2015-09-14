@@ -21,7 +21,6 @@ import QtQuick 2.1
 import Sailfish.Silica 1.0
 
 import QtSensors 5.0
-//import QtSystemInfo 5.0
 import QtMultimedia 5.0
 
 import Bacon2D 1.0
@@ -47,7 +46,6 @@ ApplicationWindow {
         id: constants
     }
 
-    property string version: "0.1.0 Sailfish OS"
     property real velocity: units.gu(0.3)
 
     // XXX: check all the code to de-duplicate all these alias
@@ -93,8 +91,6 @@ ApplicationWindow {
         property alias highScore: settings.highScore
 
         currentScene: mainScene
-
-//        ScreenSaver { screenSaverEnabled: !gameScene.running }
 
         Settings {
             id: settings
