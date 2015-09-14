@@ -9,9 +9,9 @@
 #   - icon definition filename in desktop file must be changed
 #   - translation filenames have to be changed
 
-# The name of your application
 include(./Bacon2D/src/Bacon2D-static.pri)
 
+# The name of your application
 TARGET = harbour-falldown
 
 # Application version
@@ -23,6 +23,8 @@ QT += multimedia sensors
 CONFIG += sailfishapp
 
 SOURCES += src/main.cpp
+
+#DEFINES += BACON2D_NAMESPACE=\\\"harbour.falldown.bacon2d\\\"
 
 OTHER_FILES += \
         rpm/harbour-falldown.changes.in \
@@ -85,8 +87,6 @@ OTHER_FILES += \
         harbour-falldown.png \
         qml/CoverPage.qml \
         qml/Constants.qml
-
-INCLUDEPATH += $$PWD
 
 # to disable building translations every time, comment out the
 # following CONFIG line

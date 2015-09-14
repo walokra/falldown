@@ -20,6 +20,7 @@
 #ifdef QT_QML_DEBUG
 #include <QtQuick>
 #endif
+
 #include <QScopedPointer>
 #include <QQuickView>
 #include <QQmlEngine>
@@ -29,14 +30,10 @@
 #include <QDebug>
 
 #include <sailfishapp.h>
-#include <plugins.h>
 
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-
-//    Plugins plugins;
-//    plugins.registerTypes("Bacon2D");
 
     app->setApplicationName("harbour-falldown");
     app->setOrganizationName("harbour-falldown");
@@ -44,6 +41,7 @@ int main(int argc, char *argv[])
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
+//    Put Bacon2D QML files you built under imports/Bacon2D
     view->engine()->addImportPath(SailfishApp::pathTo("qml/imports/").toLocalFile());
 
     view->rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
