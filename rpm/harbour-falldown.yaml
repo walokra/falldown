@@ -28,7 +28,7 @@ PkgConfigBR:
 Requires:
   - sailfishsilica-qt5 >= 0.10.9 
   - qt5-qtmultimedia
-#  - qt5-qtsensors
+  - qt5-qtsensors
 #  - qt5-qtdeclarative-systeminfo
 #  - qt5-qtdeclarative-import-sensors
 
