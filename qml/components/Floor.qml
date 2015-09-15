@@ -19,7 +19,7 @@
 
 import QtQuick 2.1
 
-import Bacon2D 1.0
+import harbour.falldown.bacon2d 1.0
 
 Component {
     PhysicsEntity {

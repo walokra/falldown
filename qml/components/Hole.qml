@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.1
-import Bacon2D 1.0
+import harbour.falldown.bacon2d 1.0
 
 import "../js/game.js" as Game
 

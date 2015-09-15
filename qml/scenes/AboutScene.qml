@@ -20,7 +20,7 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 
-import Bacon2D 1.0
+import harbour.falldown.bacon2d 1.0
 
 Scene {
     // XXX https://github.com/Bacon2D/Bacon2D/issues/114

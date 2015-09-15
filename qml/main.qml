@@ -23,7 +23,7 @@ import Sailfish.Silica 1.0
 import QtSensors 5.0
 import QtMultimedia 5.0
 
-import Bacon2D 1.0
+import harbour.falldown.bacon2d 1.0
 
 import "components"
 import "scenes"
