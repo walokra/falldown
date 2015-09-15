@@ -30,10 +30,16 @@
 #include <QDebug>
 
 #include <sailfishapp.h>
+// If using statically linked Bacon2D, include plugins.h
+#include <plugins.h>
 
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+
+    // If using statically linked Bacon2D, register harbour.falldown.bacon2d as Bacon2D type
+    Plugins plugins;
+    plugins.registerTypes("harbour.falldown.bacon2d");
 
     app->setApplicationName("harbour-falldown");
     app->setOrganizationName("harbour-falldown");
@@ -41,8 +47,8 @@ int main(int argc, char *argv[])
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
-//    Put Bacon2D QML files you built under imports/Bacon2D
-    view->engine()->addImportPath(SailfishApp::pathTo("qml/imports/").toLocalFile());
+    // If using dynamically linked Bacon2D, put QML files and .so under lib directory and uncomment next line
+//    view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
 
     view->rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
     view->rootContext()->setContextProperty("APP_RELEASE", APP_RELEASE);

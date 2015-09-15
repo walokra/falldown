@@ -9,6 +9,7 @@
 #   - icon definition filename in desktop file must be changed
 #   - translation filenames have to be changed
 
+# With statically linked Bacon2D include it's .pri and define namespace
 include(./Bacon2D/src/Bacon2D-static.pri)
 
 # The name of your application
@@ -18,13 +19,17 @@ TARGET = harbour-falldown
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += APP_RELEASE=\\\"$$RELEASE\\\"
 
+# With dynamically linked Bacon2D copy files from lib to inside RPM
+#DEPLOYMENT_PATH = /usr/share/$${TARGET}
+#lib.files += lib
+#lib.path = $${DEPLOYMENT_PATH}
+#INSTALLS += lib
+
 QT += multimedia sensors
 
 CONFIG += sailfishapp
 
 SOURCES += src/main.cpp
-
-#DEFINES += BACON2D_NAMESPACE=\\\"harbour.falldown.bacon2d\\\"
 
 OTHER_FILES += \
         rpm/harbour-falldown.changes.in \
@@ -86,7 +91,8 @@ OTHER_FILES += \
         qml/sounds/soundtrack.mp3 \
         harbour-falldown.png \
         qml/CoverPage.qml \
-        qml/Constants.qml
+        qml/Constants.qml \
+        qml/components/PhysicsEntity.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
