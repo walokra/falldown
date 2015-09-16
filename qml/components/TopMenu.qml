@@ -38,19 +38,38 @@ Item {
         target: coverPage
         onCoverStatusChanged: {
             if (coverStatus === PageStatus.Activating) {
-                pause();
+                pause()
+            }
+            if (coverStatus === PageStatus.Deactiving) {
+                if (!mute) {
+                    soundtrack.play()
+                    pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
+                }
             }
         }
     }
 
+    property bool prevMuteValue: mute
+
     function pause() {
         if (game) {
-            if (game.gameState === Bacon2D.Paused) {
-                game.gameState = Bacon2D.Running;
-                pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/pause-btn.png");
-            } else {
-                game.gameState = Bacon2D.Paused;
-                pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png");
+            game.gameState = game.paused
+            pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
+
+            soundtrack.pause()
+            prevMuteValue = mute
+            mute = true
+        }
+    }
+
+    function play() {
+        if (game) {
+            game.gameState = game.running
+            pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/pause-btn.png")
+
+            if (!prevMuteValue) {
+                soundtrack.play()
+                mute = false
             }
         }
     }
@@ -80,6 +99,7 @@ Item {
         }
 
         IconButton {
+            id: soundBtn
             icon.height: constants.itemSizeMedium
             icon.width: height
 
@@ -139,7 +159,7 @@ Item {
             anchors.top: parent.top
 
             onClicked: {
-                pause()
+                (game.gameState === game.paused) ? play() : pause()
             }
 
             Connections {

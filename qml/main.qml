@@ -35,7 +35,7 @@ ApplicationWindow {
     QtObject {
         id: units;
 
-        // 1 gu = 18 px
+        // 1 gu = 18 px in Ubuntu
         function gu(value) {
             return value * 14
         }
@@ -62,15 +62,6 @@ ApplicationWindow {
     property alias highScore: settings.highScore
     property alias mute: settings.mute
 
-//    initialPage: Component {
-//            id: main;
-
-//            MainScene {
-//            id: mp;
-//                property bool __isMainPage : true;
-//            }
-//    }
-
     cover: CoverPage { id: coverPage; }
 
     Game {
@@ -89,6 +80,13 @@ ApplicationWindow {
         property alias wine: gameScene.wine
         property alias oldVelocity: gameScene.oldVelocity
         property alias highScore: settings.highScore
+
+        // Bacon2D enums
+        property int active: 0
+        property int inactive: 1
+        property int running: 2
+        property int paused: 3
+        property int suspended: 4
 
         currentScene: mainScene
 

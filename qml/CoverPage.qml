@@ -16,11 +16,6 @@ CoverBackground {
     signal coverStatusChanged(int coverStatus);
 
     onStatusChanged: {
-        if (status === PageStatus.Deactivating) {
-        }else if (status === PageStatus.Activating) {
-
-        }
-
         coverStatusChanged(status);
     }
 

@@ -124,7 +124,7 @@ function startGame() {
     gameScene.endGame = false;
     resetGame();
     game.currentScene = gameScene;
-    game.gameState = Bacon2D.Running;
+    game.gameState = game.running;
     Game.addFloor(parent.width, units.gu(1));
     Game.addBall();
 }
