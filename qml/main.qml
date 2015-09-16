@@ -33,13 +33,34 @@ ApplicationWindow {
     id: root
 
     QtObject {
-        id: units;
+        id: units
 
         // 1 gu = 18 px in Ubuntu
         function gu(value) {
             return value * 14
         }
+    }
 
+    QtObject {
+        id: timers
+
+        function startTimers() {
+            smallerBallTimer.start()
+            slowTimeTimer.start()
+            baloonTimer.start()
+            glueTimer.start()
+            wineTimer.start()
+            newLifeTimer.start()
+        }
+
+        function stopTimers() {
+            smallerBallTimer.stop()
+            slowTimeTimer.stop()
+            baloonTimer.stop()
+            glueTimer.stop()
+            wineTimer.stop()
+            newLifeTimer.stop()
+        }
     }
 
     Constants {

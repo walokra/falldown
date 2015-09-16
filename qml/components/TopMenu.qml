@@ -39,12 +39,14 @@ Item {
         onCoverStatusChanged: {
             if (coverStatus === PageStatus.Activating) {
                 pause()
+                timers.stopTimers()
             }
             if (coverStatus === PageStatus.Deactiving) {
                 if (!mute) {
                     soundtrack.play()
                     pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
                 }
+                timers.startTimers()
             }
         }
     }
