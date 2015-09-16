@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
     // If using statically linked Bacon2D, register harbour.falldown.bacon2d as Bacon2D type
     Plugins plugins;
-    plugins.registerTypes("harbour.falldown.bacon2d");
+    plugins.registerTypes("Bacon2D");
 
     app->setApplicationName("harbour-falldown");
     app->setOrganizationName("harbour-falldown");

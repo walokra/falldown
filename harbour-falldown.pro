@@ -31,6 +31,8 @@ CONFIG += sailfishapp
 
 SOURCES += src/main.cpp
 
+#DEFINES += BACON2D_NAMESPACE=\\\"harbour.falldown.bacon2d\\\"
+
 OTHER_FILES += \
         rpm/harbour-falldown.changes.in \
         rpm/harbour-falldown.yaml \
