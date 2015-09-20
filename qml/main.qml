@@ -41,24 +41,10 @@ ApplicationWindow {
         id: timers
 
         function startTimers() {
-//            smallerBallTimer.start()
-//            slowTimeTimer.start()
-//            baloonTimer.start()
-//            glueTimer.start()
-//            wineTimer.start()
-//            newLifeTimer.start()
-
             displayTimer.start()
         }
 
         function stopTimers() {
-//            smallerBallTimer.stop()
-//            slowTimeTimer.stop()
-//            baloonTimer.stop()
-//            glueTimer.stop()
-//            wineTimer.stop()
-//            newLifeTimer.stop()
-
             displayTimer.stop()
         }
     }
@@ -91,6 +77,12 @@ ApplicationWindow {
     property alias oldVelocity: gameScene.oldVelocity
     property alias highScore: settings.highScore
     property alias mute: settings.mute
+
+    property int smallBallInterval: 5000
+    property int slowTimeInterval: 2125
+    property int baloonInterval: 3000
+    property int glueInterval: 8000
+    property int wineInterval: 5000
 
     cover: CoverPage { id: coverPage; }
 
@@ -163,35 +155,35 @@ ApplicationWindow {
 
         Timer {
             id: smallerBallTimer
-            interval: 5000
+            interval: smallBallInterval
 
             onTriggered: smallerBall = false;
         }
 
         Timer {
             id: slowTimeTimer
-            interval: 2125
+            interval: slowTimeInterval
 
             onTriggered: slowTime = false;
         }
 
         Timer {
             id: baloonTimer
-            interval: 3000
+            interval: baloonInterval
 
             onTriggered: baloon = false;
         }
 
         Timer {
             id: glueTimer
-            interval: 8000
+            interval: glueInterval
 
             onTriggered: glue = false;
         }
 
         Timer {
             id: wineTimer
-            interval: 5000
+            interval: wineInterval
 
             onTriggered: wine = false;
         }
@@ -216,13 +208,11 @@ ApplicationWindow {
             repeat: true
             triggeredOnStart: true
             onTriggered: {
-                console.log("req_display_blanking_pause")
                 dbus.call("req_display_blanking_pause", undefined)
             }
 
             onRunningChanged: {
                 if (!running) {
-                    console.log("req_display_cancel_blanking_pause")
                     dbus.call("req_display_cancel_blanking_pause", undefined)
                 }
             }

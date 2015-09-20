@@ -39,10 +39,9 @@ Item {
         onCoverStatusChanged: {
             if (coverStatus === PageStatus.Activating) {
                 pause()
-                timers.stopTimers()
             }
             if (coverStatus === PageStatus.Deactiving) {
-                timers.startTimers()
+
             }
         }
     }
@@ -52,7 +51,6 @@ Item {
         onActiveChanged: {
             if (!Qt.application.active) {
                 pause()
-                timers.stopTimers()
                 appActive = true
                 isMuted = true
             }
@@ -63,10 +61,36 @@ Item {
         }
     }
 
+    property bool isSmallerBall: false
+    property bool isSlowTime: false
+    property bool isBaloonTime: false
+    property bool isGlueTime: false
+    property bool isWine: false
+
     function pause() {
         if (game) {
+            timers.stopTimers()
             game.gameState = game.paused
             pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
+
+            // Check if powerups are active when pausing
+            if (smallerBallTimer.running) {
+                smallBallInterval = smallerBallTimer.interval
+                isSmallerBall = true
+            }
+            if (slowTimeTimer.running) {
+                isSlowTime = true
+            }
+            if (baloonTimer.running) {
+                isBaloonTime = true
+            }
+            if (glueTimer.running) {
+                isGlueTime = true
+            }
+            if (wineTimer.running) {
+                wineInterval = wineTimer.interval
+                isWine = true
+            }
         }
     }
 
@@ -74,9 +98,47 @@ Item {
         if (game) {
             game.gameState = game.running
             pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/pause-btn.png")
+            timers.startTimers()
         }
         if (!mute) {
             soundtrack.play()
+        }
+
+        // Restart powerup timers which were possibly timeouted while paused
+        if (isSmallerBall) {
+            smallerBallTimer.interval = smallBallInterval
+            smallerBall = true
+            smallerBallTimer.start()
+            isSmallerBall = false
+            smallBallInterval = 5000
+        }
+        if (isSlowTime) {
+            slowTimeTimer.interval = slowTimeInterval
+            slowTime = true
+            slowTimeTimer.start()
+            isSlowTime = false
+            slowTimeInterval = 2125
+        }
+        if (isBaloonTime) {
+            baloonTimer.interval = baloonInterval
+            baloon = true
+            baloonTimer.start()
+            isBaloonTime = false
+            baloonInterval = 3000
+        }
+        if (isGlueTime) {
+            glueTimer.interval = glueInterval
+            glue = true
+            glueTimer.start()
+            isGlueTime = false
+            glueInterval = 8000
+        }
+        if (isWine) {
+            wineTimer.interval = wineInterval
+            wine = true
+            wineTimer.start()
+            isWine = false
+            wineInterval = 5000
         }
     }
 
