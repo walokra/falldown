@@ -82,19 +82,6 @@ Scene {
             }
         }
 
-        /*
-        Label {
-            anchors {
-                left: parent.left
-                leftMargin: 2 * Theme.paddingLarge
-            }
-
-            text: "v " + version
-            color: "#E69F00"
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        */
-
         Image {
             anchors.topMargin: Theme.paddingLarge
             source: Qt.resolvedUrl("../img/ui/score_back.png")
