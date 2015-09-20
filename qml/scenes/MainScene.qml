@@ -111,7 +111,7 @@ Scene {
 
                 anchors.centerIn: parent
 
-                onClicked: Game.startGame()
+                onClicked: { timers.startTimers(); Game.startGame() }
             }
         }
 

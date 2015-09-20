@@ -68,6 +68,7 @@ Scene {
                 newLifeTimer.restart();
             }
             else {
+                timers.stopTimers()
                 Game.endGame();
             }
         }

@@ -161,7 +161,7 @@ Scene {
 
                     icon.source: Qt.resolvedUrl("../img/ui/play-btn.png")
 
-                    onClicked: Game.startGame()
+                    onClicked: { timers.startTimers(); Game.startGame() }
                 }
 
                 Item {

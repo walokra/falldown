@@ -25,6 +25,8 @@ import QtMultimedia 5.0
 
 import harbour.falldown.bacon2d 1.0
 
+import org.nemomobile.dbus 1.0
+
 import "components"
 import "scenes"
 import "js/game.js" as Game
@@ -39,21 +41,25 @@ ApplicationWindow {
         id: timers
 
         function startTimers() {
-            smallerBallTimer.start()
-            slowTimeTimer.start()
-            baloonTimer.start()
-            glueTimer.start()
-            wineTimer.start()
-            newLifeTimer.start()
+//            smallerBallTimer.start()
+//            slowTimeTimer.start()
+//            baloonTimer.start()
+//            glueTimer.start()
+//            wineTimer.start()
+//            newLifeTimer.start()
+
+            displayTimer.start()
         }
 
         function stopTimers() {
-            smallerBallTimer.stop()
-            slowTimeTimer.stop()
-            baloonTimer.stop()
-            glueTimer.stop()
-            wineTimer.stop()
-            newLifeTimer.stop()
+//            smallerBallTimer.stop()
+//            slowTimeTimer.stop()
+//            baloonTimer.stop()
+//            glueTimer.stop()
+//            wineTimer.stop()
+//            newLifeTimer.stop()
+
+            displayTimer.stop()
         }
     }
 
@@ -199,6 +205,36 @@ ApplicationWindow {
                     velocity = oldVelocity;
                     Game.addBall();
                 }
+            }
+        }
+
+        Timer {
+            id: displayTimer
+            property alias suspend: displayTimer.running
+
+            interval: 60000
+            repeat: true
+            triggeredOnStart: true
+            onTriggered: {
+                console.log("req_display_blanking_pause")
+                dbus.call("req_display_blanking_pause", undefined)
+            }
+
+            onRunningChanged: {
+                if (!running) {
+                    console.log("req_display_cancel_blanking_pause")
+                    dbus.call("req_display_cancel_blanking_pause", undefined)
+                }
+            }
+
+            property DBusInterface _dbus: DBusInterface {
+                id: dbus
+
+                destination: "com.nokia.mce"
+                path: "/com/nokia/mce/request"
+                iface: "com.nokia.mce.request"
+
+                busType: DBusInterface.SystemBus
             }
         }
 
