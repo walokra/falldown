@@ -54,7 +54,7 @@ ApplicationWindow {
 
         // 1 gu = 18 px in Ubuntu
         function gu(value) {
-            return value * 18
+            return value * 16
         }
     }
 
@@ -62,7 +62,7 @@ ApplicationWindow {
         id: constants
     }
 
-    property real velocity: units.gu(0.3)
+    property real velocity: units.gu(0.4)
 
     // XXX: check all the code to de-duplicate all these alias
     property alias smallerBall: gameScene.smallerBall

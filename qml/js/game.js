@@ -132,7 +132,7 @@ function startGame() {
 function resetGame() {
     gravity = Qt.point(0, 20);
     score = 0;
-    velocity = units.gu(0.3);
+    velocity = units.gu(0.4);
     lifes = 2;
     numberOfBalls = 0;
     smallerBall = false;
