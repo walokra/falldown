@@ -78,8 +78,8 @@ Scene {
             source: Qt.resolvedUrl("../img/ui/title.png")
 
             anchors.horizontalCenter: parent.horizontalCenter
-            width: parent.width // parent.width / 1.25
-            height: 2 * constants.itemSizeSmall // units.gu(10)
+            width: parent.width
+            height: 2 * constants.itemSizeSmall
 
             Image {
                 source: Qt.resolvedUrl("../img/board/ball-back.png")
@@ -90,7 +90,7 @@ Scene {
                     bottomMargin: parent.height / 10
                 }
 
-                height: constants.itemSizeSmall // units.gu(5)
+                height: constants.itemSizeSmall
                 width: height
 
                 Image {
