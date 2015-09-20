@@ -32,14 +32,8 @@ import "js/game.js" as Game
 ApplicationWindow {
     id: root
 
-    QtObject {
-        id: units
-
-        // 1 gu = 18 px in Ubuntu
-        function gu(value) {
-            return value * 14
-        }
-    }
+    property bool isMuted: false
+    property bool appActive: true
 
     QtObject {
         id: timers
@@ -60,6 +54,15 @@ ApplicationWindow {
             glueTimer.stop()
             wineTimer.stop()
             newLifeTimer.stop()
+        }
+    }
+
+    QtObject {
+        id: units
+
+        // 1 gu = 18 px in Ubuntu
+        function gu(value) {
+            return value * 18
         }
     }
 
@@ -192,8 +195,10 @@ ApplicationWindow {
             interval: 1500
 
             onTriggered: {
-                velocity = oldVelocity;
-                Game.addBall();
+                if (game.gameState !== game.paused) {
+                    velocity = oldVelocity;
+                    Game.addBall();
+                }
             }
         }
 
@@ -256,10 +261,10 @@ ApplicationWindow {
         Audio {
             id: soundtrack
             source: Qt.resolvedUrl("sounds/soundtrack.mp3")
-            muted: settings.mute
+            muted: isMuted || settings.mute
             loops: Audio.Infinite
             autoPlay: true
-            volume: 0.7
+//            volume: 0.7
         }
 
         Keys.onPressed: {

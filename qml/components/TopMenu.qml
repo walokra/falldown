@@ -42,25 +42,31 @@ Item {
                 timers.stopTimers()
             }
             if (coverStatus === PageStatus.Deactiving) {
-                if (!mute) {
-                    soundtrack.play()
-                    pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
-                }
                 timers.startTimers()
             }
         }
     }
 
-    property bool prevMuteValue: mute
+    Connections {
+        target: Qt.application
+        onActiveChanged: {
+            if (!Qt.application.active) {
+                pause()
+                timers.stopTimers()
+                appActive = true
+                isMuted = true
+            }
+            else {
+                appActive = false
+                isMuted = false
+            }
+        }
+    }
 
     function pause() {
         if (game) {
             game.gameState = game.paused
             pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
-
-            soundtrack.pause()
-            prevMuteValue = mute
-            mute = true
         }
     }
 
@@ -68,11 +74,9 @@ Item {
         if (game) {
             game.gameState = game.running
             pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/pause-btn.png")
-
-            if (!prevMuteValue) {
-                soundtrack.play()
-                mute = false
-            }
+        }
+        if (!mute) {
+            soundtrack.play()
         }
     }
 
@@ -167,8 +171,9 @@ Item {
             Connections {
                 target: gameScene
                 onEndGameChanged: {
-                    if (gameScene.endGame)
+                    if (gameScene.endGame) {
                         pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/pause-btn.png");
+                    }
                 }
             }
         }
