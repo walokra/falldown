@@ -111,7 +111,7 @@ function addPowerup() {
         }
     }
     newPowerUp.x = randomIntFromInterval(0, gameScene.width / 1.2);
-    newPowerUp.y = gameScene.height + 2;
+    newPowerUp.y = gameScene.height + units.gu(2);
 }
 
 // Credits to http://stackoverflow.com/a/7228322/2586392
