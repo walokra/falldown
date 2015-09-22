@@ -39,9 +39,12 @@ Item {
         onCoverStatusChanged: {
             if (coverStatus === PageStatus.Activating) {
                 pause()
+                soundtrack.stop()
             }
             if (coverStatus === PageStatus.Deactiving) {
-
+                if (!mute) {
+                    soundtrack.play()
+                }
             }
         }
     }
@@ -53,10 +56,14 @@ Item {
                 pause()
                 appActive = true
                 isMuted = true
+                soundtrack.stop()
             }
             else {
                 appActive = false
                 isMuted = false
+                if (!mute) {
+                    soundtrack.play()
+                }
             }
         }
     }
