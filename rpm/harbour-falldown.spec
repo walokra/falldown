@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
+BuildRequires:  mce-headers
 
 %description
 Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly with rhythmic music. Don’t get squashed!

@@ -25,8 +25,6 @@ import QtMultimedia 5.0
 
 import harbour.falldown.bacon2d 1.0
 
-import org.nemomobile.dbus 1.0
-
 import "components"
 import "scenes"
 import "js/game.js" as Game
@@ -208,24 +206,15 @@ ApplicationWindow {
             repeat: true
             triggeredOnStart: true
             onTriggered: {
-                dbus.call("req_display_blanking_pause", undefined)
+                _falldown.displayBlankPreventer(false)
             }
 
             onRunningChanged: {
                 if (!running) {
-                    dbus.call("req_display_cancel_blanking_pause", undefined)
+                    _falldown.displayBlankPreventer(true)
                 }
             }
 
-            property DBusInterface _dbus: DBusInterface {
-                id: dbus
-
-                destination: "com.nokia.mce"
-                path: "/com/nokia/mce/request"
-                iface: "com.nokia.mce.request"
-
-                busType: DBusInterface.SystemBus
-            }
         }
 
         SoundEffect {
@@ -290,7 +279,6 @@ ApplicationWindow {
             muted: isMuted || settings.mute
             loops: Audio.Infinite
             autoPlay: true
-//            volume: 0.7
         }
 
         Keys.onPressed: {

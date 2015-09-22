@@ -29,7 +29,8 @@ QT += multimedia sensors dbus
 
 CONFIG += sailfishapp
 
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+    src/falldown.cpp
 
 OTHER_FILES += \
         rpm/harbour-falldown.changes.in \
@@ -103,4 +104,7 @@ OTHER_FILES += \
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 #TRANSLATIONS += translations/harbour-falldown-de.ts
+
+HEADERS += \
+    src/falldown.h
 

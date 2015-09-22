@@ -33,6 +33,8 @@
 // If using statically linked Bacon2D, include plugins.h
 #include <plugins.h>
 
+#include <src/falldown.h>
+
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
@@ -49,6 +51,9 @@ int main(int argc, char *argv[])
 
     // If using dynamically linked Bacon2D, put QML files and .so under lib directory and uncomment next line
 //    view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
+
+    Falldown falldown;
+    view->rootContext()->setContextProperty("_falldown", &falldown);
 
     view->rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
     view->rootContext()->setContextProperty("APP_RELEASE", APP_RELEASE);
