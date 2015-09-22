@@ -15,7 +15,7 @@ Name:       harbour-falldown
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly.
 Version:    0.1
-Release:    2
+Release:    3
 Group:      Applications/Games
 License:    LICENSE
 URL:        https://github.com/walokra/falldown
