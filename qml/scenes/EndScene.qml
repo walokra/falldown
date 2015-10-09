@@ -23,6 +23,8 @@ import harbour.falldown.bacon2d 1.0
 
 import "../js/game.js" as Game
 
+import "../components"
+
 Scene {
     // XXX https://github.com/Bacon2D/Bacon2D/issues/114
     //physics: true
@@ -74,44 +76,9 @@ Scene {
             }
         }
 
-        Image {
-            source: Qt.resolvedUrl("../img/ui/title.png")
+        Title {
 
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: parent.width
-            height: 2 * constants.itemSizeSmall
-
-            Image {
-                source: Qt.resolvedUrl("../img/board/ball-back.png")
-
-                anchors {
-                    left: parent.horizontalCenter
-                    bottom: parent.bottom
-                    bottomMargin: parent.height / 10
-                }
-
-                height: constants.itemSizeSmall
-                width: height
-
-                Image {
-                    anchors.fill: parent
-                    source: Qt.resolvedUrl("../img/board/ball-smile.png")
-                }
-            }
         }
-
-        /*
-        Label {
-            anchors {
-                left: parent.left
-                leftMargin: 2 * Theme.paddingLarge
-            }
-
-            text: "v " + version
-            color: "#E69F00"
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        */
 
         Column {
             anchors { left: parent.left; right: parent.right }

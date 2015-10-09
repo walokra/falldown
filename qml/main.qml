@@ -30,7 +30,7 @@ import "scenes"
 import "js/game.js" as Game
 
 ApplicationWindow {
-    id: root
+    id: mainView
 
     property bool isMuted: false
     property bool appActive: true

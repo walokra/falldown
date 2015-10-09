@@ -93,7 +93,8 @@ OTHER_FILES += \
         harbour-falldown.png \
         qml/CoverPage.qml \
         qml/Constants.qml \
-        qml/components/PhysicsEntity.qml
+        qml/components/PhysicsEntity.qml \
+    qml/components/Title.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
