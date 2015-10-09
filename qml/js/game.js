@@ -143,11 +143,7 @@ function resetGame() {
     velocity = units.gu(0.4);
     lifes = 2;
     numberOfBalls = 0;
-    smallerBall = false;
-    slowTime = false;
-    baloon = false;
-    glue = false;
-    wine = false;
+    resetPowerupsEffects();
 }
 
 function endGame() {
@@ -164,4 +160,12 @@ function endGame() {
 function restartGame() {
     gameScene.endGame = true;
     startGame();
+}
+
+function resetPowerupsEffects() {
+    smallerBall = false;
+    slowTime = false;
+    baloon = false;
+    glue = false;
+    wine = false;
 }

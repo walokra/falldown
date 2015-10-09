@@ -66,6 +66,7 @@ Scene {
                 oldVelocity = velocity
                 velocity = -units.gu(1.1);
                 newLifeTimer.restart();
+                Game.resetPowerupsEffects();
             }
             else {
                 timers.stopTimers()
