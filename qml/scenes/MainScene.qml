@@ -27,10 +27,6 @@ import "../js/game.js" as Game
 import "../components"
 
 Scene {
-    // XXX https://github.com/Bacon2D/Bacon2D/issues/114
-    //physics: true
-    Component.onCompleted: physics = true
-
     Image {
         source: Qt.resolvedUrl("../img/board/background-tile.png")
         anchors.fill: parent

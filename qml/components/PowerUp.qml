@@ -31,7 +31,6 @@ Component {
         height: units.gu(6)
         width: height
 
-        updateInterval: 1
         sleepingAllowed: true
         linearVelocity: Qt.point(0, -velocity)
 
@@ -63,26 +62,26 @@ Component {
                         Game.addBall(body.target.x, body.target.y + body.target.height / 2);
                     } else if (powerUp.typeOfPowerUp === 'smallBall') {
                         shrinkSound.play();
-                        game.smallerBall = true;
+                        gameScene.smallerBall = true;
                         smallerBallTimer.restart();
                     } else if (typeOfPowerUp === 'slowTime') {
                         clockSound.play();
-                        game.slowTime = true;
+                        gameScene.slowTime = true;
                         slowTimeTimer.restart();
                     } else if (powerUp.typeOfPowerUp === 'heart') {
                         heartSound.play();
-                        game.lifes = game.lifes + 1;
+                        gameScene.lifes = gameScene.lifes + 1;
                     } else if (powerUp.typeOfPowerUp === 'baloon') {
                         balloonSound.play();
-                        game.baloon = true;
+                        gameScene.baloon = true;
                         baloonTimer.restart();
                     } else if (powerUp.typeOfPowerUp === 'glue') {
                         glueSound.play();
-                        game.glue = true;
+                        gameScene.glue = true;
                         glueTimer.restart();
                     } else if (powerUp.typeOfPowerUp === 'wine') {
                         wineSound.play();
-                        game.wine = true;
+                        gameScene.wine = true;
                         wineTimer.restart();
                     }
 

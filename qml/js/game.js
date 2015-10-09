@@ -88,7 +88,7 @@ function addBall(x, y) {
     var newBall = ball.createObject(gameScene);
     newBall.x = x || gameScene.width / 2;
     newBall.y = y || 0;
-    numberOfBalls++;
+    gameScene.numberOfBalls++;
 }
 
 function addPowerup() {
@@ -103,7 +103,7 @@ function addPowerup() {
             newPowerUp.typeOfPowerUp = 'smallBall';
         } else if (typeOfPowerUp < UPPER_LIMIT_SLOW_DOWN) {
             newPowerUp.typeOfPowerUp = 'slowTime';
-        } else if (lifes < 3) {
+        } else if (gameScene.lifes < 3) {
             newPowerUp.typeOfPowerUp = 'heart';
         } else {
             // No hearts for you, sorry!
@@ -138,11 +138,11 @@ function startGame() {
 }
 
 function resetGame() {
-    gravity = Qt.point(0, 20);
-    score = 0;
-    velocity = units.gu(0.4);
-    lifes = 2;
-    numberOfBalls = 0;
+    gameScene.gravity = Qt.point(0, 20);
+    gameScene.score = 0;
+    mainView.velocity = units.gu(0.4);
+    gameScene.lifes = 2;
+    gameScene.numberOfBalls = 0;
     resetPowerupsEffects();
 }
 
@@ -150,8 +150,8 @@ function endGame() {
     gameScene.endGame = true;
     game.currentScene = endScene;
     endScene.lastScore = score;
-    if (score > settings.highScore) {
-        highScore = score;
+    if (gameScene.score > settings.highScore) {
+        settings.highScore = gameScene.score;
     }
 
     resetGame();
@@ -163,9 +163,9 @@ function restartGame() {
 }
 
 function resetPowerupsEffects() {
-    smallerBall = false;
-    slowTime = false;
-    baloon = false;
-    glue = false;
-    wine = false;
+    gameScene.smallerBall = false;
+    gameScene.slowTime = false;
+    gameScene.baloon = false;
+    gameScene.glue = false;
+    gameScene.wine = false;
 }

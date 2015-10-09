@@ -58,8 +58,8 @@ Component {
 
                 onBeginContact: {
                     target.numberOfContacts++;
-                    if (target.numberOfContacts <= numberOfBalls)
-                        score++;
+                    if (target.numberOfContacts <= gameScene.numberOfBalls)
+                        gameScene.score++;
                 }
             }
         ]

@@ -42,7 +42,7 @@ Item {
                 soundtrack.stop()
             }
             if (coverStatus === PageStatus.Deactiving) {
-                if (!mute) {
+                if (!settings.mute) {
                     soundtrack.play()
                 }
             }
@@ -61,7 +61,7 @@ Item {
             else {
                 appActive = false
                 isMuted = false
-                if (!mute) {
+                if (!settings.mute) {
                     soundtrack.play()
                 }
             }
@@ -107,42 +107,42 @@ Item {
             pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/pause-btn.png")
             timers.startTimers()
         }
-        if (!mute) {
+        if (!settings.mute) {
             soundtrack.play()
         }
 
         // Restart powerup timers which were possibly timeouted while paused
         if (isSmallerBall) {
             smallerBallTimer.interval = smallBallInterval
-            smallerBall = true
+            gameScene.smallerBall = true
             smallerBallTimer.start()
             isSmallerBall = false
             smallBallInterval = 5000
         }
         if (isSlowTime) {
             slowTimeTimer.interval = slowTimeInterval
-            slowTime = true
+            gameScene.slowTime = true
             slowTimeTimer.start()
             isSlowTime = false
             slowTimeInterval = 2125
         }
         if (isBaloonTime) {
             baloonTimer.interval = baloonInterval
-            baloon = true
+            gameScene.baloon = true
             baloonTimer.start()
             isBaloonTime = false
             baloonInterval = 3000
         }
         if (isGlueTime) {
             glueTimer.interval = glueInterval
-            glue = true
+            gameScene.glue = true
             glueTimer.start()
             isGlueTime = false
             glueInterval = 8000
         }
         if (isWine) {
             wineTimer.interval = wineInterval
-            wine = true
+            gameScene.wine = true
             wineTimer.start()
             isWine = false
             wineInterval = 5000

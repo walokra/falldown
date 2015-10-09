@@ -26,10 +26,6 @@ import "../js/game.js" as Game
 import "../components"
 
 Scene {
-    // XXX https://github.com/Bacon2D/Bacon2D/issues/114
-    //physics: true
-    Component.onCompleted: physics = true
-
     property int lastScore
 
     Image {

@@ -62,20 +62,6 @@ ApplicationWindow {
 
     property real velocity: units.gu(0.4)
 
-    // XXX: check all the code to de-duplicate all these alias
-    property alias smallerBall: gameScene.smallerBall
-    property alias gravity: gameScene.gravity
-    property alias score: gameScene.score
-    property alias lifes: gameScene.lifes
-    property alias numberOfBalls: gameScene.numberOfBalls
-    property alias slowTime: gameScene.slowTime
-    property alias baloon: gameScene.baloon
-    property alias glue: gameScene.glue
-    property alias wine: gameScene.wine
-    property alias oldVelocity: gameScene.oldVelocity
-    property alias highScore: settings.highScore
-    property alias mute: settings.mute
-
     property int smallBallInterval: 5000
     property int slowTimeInterval: 2125
     property int baloonInterval: 3000
@@ -88,18 +74,6 @@ ApplicationWindow {
         id: game
         anchors.centerIn: parent
         anchors.fill: parent
-
-        property alias smallerBall: gameScene.smallerBall
-        property alias gravity: gameScene.gravity
-        property alias score: gameScene.score
-        property alias lifes: gameScene.lifes
-        property alias numberOfBalls: gameScene.numberOfBalls
-        property alias slowTime: gameScene.slowTime
-        property alias baloon: gameScene.baloon
-        property alias glue: gameScene.glue
-        property alias wine: gameScene.wine
-        property alias oldVelocity: gameScene.oldVelocity
-        property alias highScore: settings.highScore
 
         // Bacon2D enums
         property int active: 0
@@ -119,7 +93,7 @@ ApplicationWindow {
             property real touchSensivity: 1.0
 
             onMuteChanged: {
-                if (mute) {
+                if (settings.mute) {
                     soundtrack.stop();
                 } else {
                     soundtrack.play();
@@ -163,35 +137,35 @@ ApplicationWindow {
             id: smallerBallTimer
             interval: smallBallInterval
 
-            onTriggered: smallerBall = false;
+            onTriggered: gameScene.smallerBall = false;
         }
 
         Timer {
             id: slowTimeTimer
             interval: slowTimeInterval
 
-            onTriggered: slowTime = false;
+            onTriggered: gameScene.slowTime = false;
         }
 
         Timer {
             id: baloonTimer
             interval: baloonInterval
 
-            onTriggered: baloon = false;
+            onTriggered: gameScene.baloon = false;
         }
 
         Timer {
             id: glueTimer
             interval: glueInterval
 
-            onTriggered: glue = false;
+            onTriggered: gameScene.glue = false;
         }
 
         Timer {
             id: wineTimer
             interval: wineInterval
 
-            onTriggered: wine = false;
+            onTriggered: gameScene.wine = false;
         }
 
         Timer {
@@ -200,7 +174,7 @@ ApplicationWindow {
 
             onTriggered: {
                 if (game.gameState !== game.paused) {
-                    velocity = oldVelocity;
+                    velocity = gameScene.oldVelocity;
                     Game.addBall();
                 }
             }
@@ -290,16 +264,16 @@ ApplicationWindow {
         }
 
         function changeGravity(direction) {
-            var inverted = wine ? -1 : 1;
-            var ballVelocity = glue ? 3 : 20;
+            var inverted = gameScene.wine ? -1 : 1;
+            var ballVelocity = gameScene.glue ? 3 : 20;
             ballVelocity = ballVelocity * inverted * settings.touchSensivity;
 
             if (direction === "left") {
-                gravity = Qt.point(-ballVelocity, 20);
+                gameScene.gravity = Qt.point(-ballVelocity, 20);
             } else if (direction === "right") {
-                gravity = Qt.point(ballVelocity, 20);
+                gameScene.gravity = Qt.point(ballVelocity, 20);
             } else if (direction === "reset") {
-                gravity = Qt.point(0, 20);
+                gameScene.gravity = Qt.point(0, 20);
             } else {
                 console.log("Wrong param for changeGravity()");
             }
@@ -321,9 +295,9 @@ ApplicationWindow {
             active: settings.control == 'tilt'
 
             onReadingChanged: {
-                var inverted = wine ? -1 : 1;
-                var ballVelocity = glue ? -2 : -12;
-                gravity = Qt.point(settings.tiltSensivity * ballVelocity * reading.x * inverted, 20)
+                var inverted = gameScene.wine ? -1 : 1;
+                var ballVelocity = gameScene.glue ? -2 : -12;
+                gameScene.gravity = Qt.point(settings.tiltSensivity * ballVelocity * reading.x * inverted, 20)
             }
         }
     }
