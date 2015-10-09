@@ -28,7 +28,7 @@ Component {
         width: gameScene.smallerBall ? units.gu(3.5) : units.gu(5)
 
         bodyType: Body.Dynamic
-        gravityScale: gameScene.baloon ? units.gu(0.2) : units.gu(0.5)
+        gravityScale: gameScene.balloon ? units.gu(0.2) : units.gu(0.5)
 
         property color ballColor: Qt.rgba(0.86, 0.28, 0.07, 1)  // #DD4814
 

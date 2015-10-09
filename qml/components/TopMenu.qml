@@ -70,7 +70,7 @@ Item {
 
     property bool isSmallerBall: false
     property bool isSlowTime: false
-    property bool isBaloonTime: false
+    property bool isBalloonTime: false
     property bool isGlueTime: false
     property bool isWine: false
 
@@ -88,8 +88,8 @@ Item {
             if (slowTimeTimer.running) {
                 isSlowTime = true
             }
-            if (baloonTimer.running) {
-                isBaloonTime = true
+            if (balloonTimer.running) {
+                isBalloonTime = true
             }
             if (glueTimer.running) {
                 isGlueTime = true
@@ -126,12 +126,12 @@ Item {
             isSlowTime = false
             slowTimeInterval = 2125
         }
-        if (isBaloonTime) {
-            baloonTimer.interval = baloonInterval
-            gameScene.baloon = true
-            baloonTimer.start()
-            isBaloonTime = false
-            baloonInterval = 3000
+        if (isBalloonTime) {
+            balloonTimer.interval = balloonInterval
+            gameScene.balloon = true
+            balloonTimer.start()
+            isBalloonTime = false
+            balloonInterval = 3000
         }
         if (isGlueTime) {
             glueTimer.interval = glueInterval

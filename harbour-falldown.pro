@@ -53,7 +53,7 @@ OTHER_FILES += \
         qml/img/board/background-tile.png\
         qml/img/board/ball-back.png\
         qml/img/board/ball-smile.png\
-        qml/img/board/baloon.png\
+        qml/img/board/balloon.png\
         qml/img/board/clock-slow-lvl.png\
         qml/img/board/elixir-3-balls.png\
         qml/img/board/elixir-get-smaller.png\

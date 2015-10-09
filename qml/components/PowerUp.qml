@@ -71,10 +71,10 @@ Component {
                     } else if (powerUp.typeOfPowerUp === 'heart') {
                         heartSound.play();
                         gameScene.lifes = gameScene.lifes + 1;
-                    } else if (powerUp.typeOfPowerUp === 'baloon') {
+                    } else if (powerUp.typeOfPowerUp === 'balloon') {
                         balloonSound.play();
-                        gameScene.baloon = true;
-                        baloonTimer.restart();
+                        gameScene.balloon = true;
+                        balloonTimer.restart();
                     } else if (powerUp.typeOfPowerUp === 'glue') {
                         glueSound.play();
                         gameScene.glue = true;
@@ -100,8 +100,8 @@ Component {
                     return Qt.resolvedUrl("../img/board/clock-slow-lvl.png");
                 if (powerUp.typeOfPowerUp === 'heart')
                     return Qt.resolvedUrl("../img/ui/heart.png");
-                if (powerUp.typeOfPowerUp === 'baloon')
-                    return Qt.resolvedUrl("../img/board/baloon.png");
+                if (powerUp.typeOfPowerUp === 'balloon')
+                    return Qt.resolvedUrl("../img/board/balloon.png");
                 if (powerUp.typeOfPowerUp === 'glue')
                     return Qt.resolvedUrl("../img/board/glue.png");
                 if (powerUp.typeOfPowerUp === 'wine')

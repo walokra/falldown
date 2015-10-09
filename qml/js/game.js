@@ -27,7 +27,7 @@ var UPPER_LIMIT_SMALLER_BALL = 0.6;
 var UPPER_LIMIT_SLOW_DOWN = 0.9;
 var UPPER_LIMIT_EXTRA_LIFE = 1;
 
-var UPPER_LIMIT_BALOON = 0.45;
+var UPPER_LIMIT_BALLOON = 0.45;
 var UPPER_LIMIT_GLUE = 0.9;
 var UPPER_LIMIT_WINE = 1;
 
@@ -110,8 +110,8 @@ function addPowerup() {
             newPowerUp.typeOfPowerUp = 'threeBalls';
         }
     } else {
-        if (typeOfPowerUp < UPPER_LIMIT_BALOON) {
-            newPowerUp.typeOfPowerUp = 'baloon';
+        if (typeOfPowerUp < UPPER_LIMIT_BALLOON) {
+            newPowerUp.typeOfPowerUp = 'balloon';
         } else if (typeOfPowerUp < UPPER_LIMIT_GLUE) {
             newPowerUp.typeOfPowerUp = 'glue';
         } else {
@@ -165,7 +165,7 @@ function restartGame() {
 function resetPowerupsEffects() {
     gameScene.smallerBall = false;
     gameScene.slowTime = false;
-    gameScene.baloon = false;
+    gameScene.balloon = false;
     gameScene.glue = false;
     gameScene.wine = false;
 }

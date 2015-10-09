@@ -41,7 +41,7 @@ Scene {
     property bool smallerBall: false
     property bool slowTime: false
 
-    property bool baloon: false
+    property bool balloon: false
     property bool glue: false
     property bool wine: false
 

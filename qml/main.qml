@@ -64,7 +64,7 @@ ApplicationWindow {
 
     property int smallBallInterval: 5000
     property int slowTimeInterval: 2125
-    property int baloonInterval: 3000
+    property int balloonInterval: 3000
     property int glueInterval: 8000
     property int wineInterval: 5000
 
@@ -148,10 +148,10 @@ ApplicationWindow {
         }
 
         Timer {
-            id: baloonTimer
-            interval: baloonInterval
+            id: balloonTimer
+            interval: balloonInterval
 
-            onTriggered: gameScene.baloon = false;
+            onTriggered: gameScene.balloon = false;
         }
 
         Timer {
