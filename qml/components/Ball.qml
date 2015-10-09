@@ -67,6 +67,11 @@ Component {
                 if (position < 0) {
                     ballEntity.doDestroy();
                 }
+
+                if (position > game.height + units.gu(5)) {
+                    // If the ball falls in some way out of the game
+                    ballEntity.doDestroy();
+                 }
             }
         }
 

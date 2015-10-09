@@ -32,8 +32,14 @@ var UPPER_LIMIT_GLUE = 0.9;
 var UPPER_LIMIT_WINE = 1;
 
 var howManyFloorsWithoutPowerUp = 0;
+var floorMutex = false;
 
 function addFloor(width, gu) {
+    // Be sure we don't duplicate floors
+    // https://bugs.launchpad.net/falldown/+bug/1495066
+    if (floorMutex) return;
+    floorMutex = true;
+
     // Choose number of holes in the floor, 90% of times just one
     var numberOfHoles = Math.random() < PERCENTUAL_OF_TWO_HOLES ? 2 : 1;
 
@@ -74,6 +80,8 @@ function addFloor(width, gu) {
         thirdFloor.y = gameScene.height;
         thirdFloor.width = width - secondHolePosition - gu * 7 + 10;
     }
+
+    floorMutex = false;
 }
 
 function addBall(x, y) {
