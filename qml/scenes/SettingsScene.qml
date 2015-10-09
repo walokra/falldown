@@ -81,6 +81,7 @@ Scene {
                 anchors {
                     left: parent.left
                     leftMargin: Theme.paddingMedium
+                    rightMargin: Theme.paddingMedium
                     right: parent.right
                 }
 
@@ -93,17 +94,13 @@ Scene {
                 Row {
                     anchors { left: parent.left; right: parent.right }
                     width: parent.width
-                    height: units.gu(10)
+                    height: childrenRect.height
 
-                    anchors.topMargin: constants.paddingExtraLarge
-                    anchors.leftMargin: constants.paddingExtraLarge
-                    anchors.rightMargin: constants.paddingExtraLarge
-
-                    spacing: constants.paddingLarge
+                    spacing: constants.paddingSmall
 
                     IconButton {
                         width: parent.width / 2
-                        height: units.gu(10)
+                        height: units.gu(13)
 
                         onClicked: {
                             settings.control = "tilt";
@@ -115,7 +112,7 @@ Scene {
 
                     IconButton {
                         width: parent.width / 2
-                        height: units.gu(10)
+                        height: units.gu(13)
 
                         onClicked: {
                             settings.control = "touch";
@@ -131,11 +128,11 @@ Scene {
                     width: parent.width
                     height: 2 * constants.paddingExtraLarge
 
-                    anchors.topMargin: constants.paddingExtraLarge
+                    Rectangle {
+                        color: "lightblue";
 
-                    Item {
                         width: parent.width / 2
-                        height: constants.paddingLarge
+                        height: childrenRect.height
 
                         TextSwitch {
                             width: constants.paddingLarge
@@ -145,9 +142,11 @@ Scene {
                         }
                     }
 
-                    Item {
+                    Rectangle {
+                        color: "lightblue";
+
                         width: parent.width / 2
-                        height: constants.paddingLarge
+                        height: childrenRect.height
 
                         TextSwitch {
                             width: constants.paddingLarge
@@ -158,9 +157,22 @@ Scene {
                     }
                 }
 
+                Column {
+                    anchors { left: parent.left; right: parent.right }
+                    width: parent.width
+                    height: constants.paddingMedium
+                }
+
                 Text {
                     text: "Sensivity"
                 }
+
+                Rectangle {
+                    color: "lightblue";
+
+                    anchors { left: parent.left; right: parent.right }
+                    width: parent.width
+                    height: childrenRect.height
 
                 Slider {
                     id: slider
@@ -182,6 +194,7 @@ Scene {
                         settings.tiltSensivity = value :
                         settings.touchSensivity = value
                     }
+                }
                 }
             }
         }
