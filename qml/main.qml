@@ -112,8 +112,11 @@ ApplicationWindow {
 
         Settings {
             id: settings
-            property int highScore: 0;
+            property int highScore: 0
             property bool mute: false
+            property string control: "tilt"
+            property real tiltSensivity: 1.0
+            property real touchSensivity: 1.0
 
             onMuteChanged: {
                 if (mute) {
@@ -123,6 +126,11 @@ ApplicationWindow {
                 }
             }
         }
+
+        SettingsScene {
+            id: settingsScene
+            anchors.fill: parent
+         }
 
         MainScene {
             id: mainScene
@@ -281,29 +289,41 @@ ApplicationWindow {
             autoPlay: true
         }
 
-        Keys.onPressed: {
+        function changeGravity(direction) {
             var inverted = wine ? -1 : 1;
             var ballVelocity = glue ? 3 : 20;
-            ballVelocity = ballVelocity * inverted;
+            ballVelocity = ballVelocity * inverted * settings.touchSensivity;
 
-            if (event.key === Qt.Key_Left) {
-              gravity = Qt.point(-ballVelocity, 20)
-            }
-
-            if (event.key === Qt.Key_Right) {
-              gravity = Qt.point(ballVelocity, 20)
+            if (direction === "left") {
+                gravity = Qt.point(-ballVelocity, 20);
+            } else if (direction === "right") {
+                gravity = Qt.point(ballVelocity, 20);
+            } else if (direction === "reset") {
+                gravity = Qt.point(0, 20);
+            } else {
+                console.log("Wrong param for changeGravity()");
             }
         }
 
-        Keys.onReleased: gravity = Qt.point(0, 20)
+        Keys.onPressed: {
+            if (event.key === Qt.Key_Left) {
+                changeGravity("left");
+            }
+
+            if (event.key === Qt.Key_Right) {
+                changeGravity("right");
+            }
+        }
+
+        Keys.onReleased: changeGravity("reset");
 
         Accelerometer {
-            active: true
+            active: settings.control == 'tilt'
 
             onReadingChanged: {
                 var inverted = wine ? -1 : 1;
                 var ballVelocity = glue ? -2 : -12;
-                gravity = Qt.point(ballVelocity * reading.x * inverted, 20)
+                gravity = Qt.point(settings.tiltSensivity * ballVelocity * reading.x * inverted, 20)
             }
         }
     }

@@ -74,6 +74,15 @@ Scene {
         }
     }
 
+    MouseArea {
+        enabled: settings.control == "touch"
+
+        onPressed: game.changeGravity(mouse.x < parent.width / 2 ? "left" : "right");
+        onReleased: game.changeGravity("reset");
+
+        anchors.fill: parent
+    }
+
     SoundEffect {
         id: deathSound
         muted: settings.mute

@@ -83,6 +83,17 @@ Scene {
 
             }
 
+            Label {
+                anchors {
+                    left: parent.left
+                    leftMargin: 2 * Theme.paddingMedium
+                }
+
+                text: "v " + APP_VERSION + "-" + APP_RELEASE + " Sailfish OS"
+                color: "#E69F00"
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
             Column {
                 anchors.topMargin: 2 * Theme.paddingMedium
 

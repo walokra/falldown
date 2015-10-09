@@ -94,7 +94,8 @@ OTHER_FILES += \
         qml/CoverPage.qml \
         qml/Constants.qml \
         qml/components/PhysicsEntity.qml \
-    qml/components/Title.qml
+    qml/components/Title.qml \
+    qml/scenes/SettingsScene.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

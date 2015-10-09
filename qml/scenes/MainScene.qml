@@ -95,34 +95,59 @@ Scene {
             }
         }
 
-        ListItem {
+        Row {
             anchors { left: parent.left; right: parent.right }
             width: parent.width
             height: constants.itemSizeLarge
 
-            anchors.leftMargin: constants.paddingExtraLarge
-            anchors.rightMargin: constants.paddingExtraLarge
+            anchors.leftMargin: constants.paddingLarge
+            anchors.rightMargin: constants.paddingLarge
 
-            IconButton {
-                anchors { left: parent.left; }
-                icon.width: constants.itemSizeLarge
-                icon.height: icon.width
+            Item {
+                width: parent.width / 3
+                height: childrenRect.height
 
-                onClicked: settings.mute = !settings.mute
+                IconButton {
+                    icon.width: constants.itemSizeLarge
+                    icon.height: icon.width
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                icon.source: settings.mute ?
-                            Qt.resolvedUrl("../img/ui/sound-on-btn-home.png") :
-                            Qt.resolvedUrl("../img/ui/sound-off-btn-home.png")
+                    onClicked: settings.mute = !settings.mute
+
+                    icon.source: settings.mute ?
+                                Qt.resolvedUrl("../img/ui/sound-on-btn-home.png") :
+                                Qt.resolvedUrl("../img/ui/sound-off-btn-home.png")
+                }
             }
 
-            IconButton {
-                icon.width: constants.itemSizeLarge
-                icon.height: icon.width
-                anchors.right: parent.right
+            Item {
+                width: parent.width / 3
+                height: childrenRect.height
 
-                onClicked: game.currentScene = aboutScene
+                IconButton {
+                    icon.width: constants.itemSizeLarge
+                    icon.height: icon.width
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                icon.source: Qt.resolvedUrl("../img/ui/info-btn-home.png")
+                    onClicked: game.currentScene = settingsScene
+
+                    icon.source: Qt.resolvedUrl("../img/ui/settings-btn-home.png")
+                }
+            }
+
+            Item {
+                width: parent.width / 3
+                height: childrenRect.height
+
+                IconButton {
+                    icon.width: constants.itemSizeLarge
+                    icon.height: icon.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    onClicked: game.currentScene = aboutScene
+
+                    icon.source: Qt.resolvedUrl("../img/ui/info-btn-home.png")
+                }
             }
         }
     }
