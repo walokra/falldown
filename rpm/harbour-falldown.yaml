@@ -34,10 +34,12 @@ Requires:
 
 # All installed files
 Files:
-  - '%{_bindir}'
-  - '%{_datadir}/%{name}'
-  - '%{_datadir}/applications/%{name}.desktop'
-  - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%defattr(0644,root,root,755)'
+- '%attr(0755,root,root) %{_bindir}'
+- '%{_bindir}'
+- '%{_datadir}/%{name}'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 # For more information about yaml and what's supported in Sailfish OS
 # build system, please see https://wiki.merproject.org/wiki/Spectacle
 

@@ -103,7 +103,7 @@ Scene {
                         height: units.gu(13)
 
                         onClicked: {
-                            settings.control = "tilt";
+                            settings.control = "tilt"
                             slider.value = settings.tiltSensivity
                         }
 
@@ -115,8 +115,8 @@ Scene {
                         height: units.gu(13)
 
                         onClicked: {
-                            settings.control = "touch";
-                            slider.value = settings.touchSensivity;
+                            settings.control = "touch"
+                            slider.value = settings.touchSensivity
                         }
 
                         icon.source: Qt.resolvedUrl("../img/ui/control-touch.png")
@@ -129,7 +129,7 @@ Scene {
                     height: 2 * constants.paddingExtraLarge
 
                     Rectangle {
-                        color: "lightblue";
+                        color: "lightblue"
 
                         width: parent.width / 2
                         height: childrenRect.height
@@ -138,7 +138,7 @@ Scene {
                             width: constants.paddingLarge
                             anchors.horizontalCenter: parent.horizontalCenter
 
-                            checked: settings.control === 'tilt'
+                            checked: settings.control == "tilt"
                         }
                     }
 
@@ -152,7 +152,7 @@ Scene {
                             width: constants.paddingLarge
                             anchors.horizontalCenter: parent.horizontalCenter
 
-                            checked: settings.control === 'touch'
+                            checked: settings.control == "touch"
                         }
                     }
                 }
@@ -168,33 +168,30 @@ Scene {
                 }
 
                 Rectangle {
-                    color: "lightblue";
+                    color: "lightblue"
 
                     anchors { left: parent.left; right: parent.right }
                     width: parent.width
                     height: childrenRect.height
 
-                Slider {
-                    id: slider
-                    width: parent.width
+                    Slider {
+                        id: slider
+                        width: parent.width
 
-//                    label: "Sensivity";
+                        minimumValue: 0.1
+                        maximumValue: 2.0
+                        value: settings.control === "tilt" ?
+                                settings.tiltSensivity : settings.touchSensivity
+                        valueText: value;
 
-                    minimumValue: 0.1
-                    maximumValue: 2.0
-                    value: settings.control === "tilt" ?
-                        settings.tiltSensivity : settings.touchSensivity
-                    valueText: value;
+                        stepSize: 0.1;
 
-                    stepSize: 0.1;
-
-                    /// XXX WTF
-                    onValueChanged: {
-                        settings.control === "tilt" ?
-                        settings.tiltSensivity = value :
-                        settings.touchSensivity = value
+                        /// XXX WTF
+                        onValueChanged: {
+                            settings.control === "tilt" ?
+                                settings.tiltSensivity = value : settings.touchSensivity = value
+                        }
                     }
-                }
                 }
             }
         }
