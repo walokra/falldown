@@ -1,5 +1,5 @@
 Name: harbour-falldown
-Summary: Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly.
+Summary: Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly
 Version: 0.2
 Release: 1
 Group: Applications/Games
@@ -28,8 +28,8 @@ PkgConfigBR:
 Requires:
   - sailfishsilica-qt5 >= 0.10.9 
   - qt5-qtmultimedia
-  - qt5-qtsensors
-  - qt5-qtdeclarative-import-sensors
+#  - qt5-qtsensors
+#  - qt5-qtdeclarative-import-sensors
 #  - qt5-qtdeclarative-systeminfo
 
 # All installed files
