@@ -23,6 +23,8 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-falldown.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   qt5-qtmultimedia
+Requires:   qt5-qtsensors
+Requires:   qt5-qtdeclarative-import-sensors
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
