@@ -32,6 +32,8 @@ import "js/game.js" as Game
 ApplicationWindow {
     id: mainView
 
+    allowedOrientations: Orientation.Portrait;
+
     property bool isMuted: false
     property bool appActive: true
 
@@ -52,7 +54,8 @@ ApplicationWindow {
 
         // 1 gu = 18 px in Ubuntu
         function gu(value) {
-            return value * 16
+//            console.log("value=", value, ", pixelRatio=",  Theme.pixelRatio)
+            return value * 16 // * Theme.pixelRatio
         }
     }
 
@@ -73,7 +76,15 @@ ApplicationWindow {
     Game {
         id: game
         anchors.centerIn: parent
-        anchors.fill: parent
+//        anchors.fill: parent
+
+        clip: true
+
+        width: Screen.sizeCategory >= Screen.Large
+                            ? parent.width / 2 : parent.width
+
+        height: Screen.sizeCategory >= Screen.Large
+                            ? parent.height / 2 : parent.height
 
         // Bacon2D enums
         property int active: 0
