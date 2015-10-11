@@ -43,11 +43,11 @@ int main(int argc, char *argv[])
     Plugins plugins;
     plugins.registerTypes("Bacon2D");
 
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
+
     app->setApplicationName("harbour-falldown");
     app->setOrganizationName("harbour-falldown");
     app->setApplicationVersion(APP_VERSION);
-
-    QScopedPointer<QQuickView> view(SailfishApp::createView());
 
     // If using dynamically linked Bacon2D, put QML files and .so under lib directory and uncomment next line
 //    view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
