@@ -7,6 +7,7 @@ Name:       harbour-falldown
 
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
+%define __requires_exclude ^libm.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
