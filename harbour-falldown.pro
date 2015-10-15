@@ -25,6 +25,11 @@ DEFINES += APP_RELEASE=\\\"$$RELEASE\\\"
 #lib.path = $${DEPLOYMENT_PATH}
 #INSTALLS += lib
 
+appicons.path = /usr/share/icons/hicolor
+appicons.files = appicons/*
+
+INSTALLS += appicons
+
 QT += multimedia sensors dbus
 
 CONFIG += sailfishapp
