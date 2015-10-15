@@ -76,15 +76,14 @@ ApplicationWindow {
     Game {
         id: game
         anchors.centerIn: parent
-//        anchors.fill: parent
 
         clip: true
 
         width: Screen.sizeCategory >= Screen.Large
-                            ? parent.width / 2 : parent.width
+                            ? parent.width / (1.25) : parent.width
 
         height: Screen.sizeCategory >= Screen.Large
-                            ? parent.height / 2 : parent.height
+                            ? parent.height / (1.25) : parent.height
 
         // Bacon2D enums
         property int active: 0
