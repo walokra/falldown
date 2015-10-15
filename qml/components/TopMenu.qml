@@ -58,12 +58,12 @@ Item {
         onActiveChanged: {
             if (!Qt.application.active) {
                 pause()
-                appActive = true
+                appActive = false
                 isMuted = true
                 soundtrack.stop()
             }
             else {
-                appActive = false
+                appActive = true
                 isMuted = false
                 if (!settings.mute) {
                     soundtrack.play()
