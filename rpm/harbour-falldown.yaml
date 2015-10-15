@@ -1,7 +1,7 @@
 Name: harbour-falldown
 Summary: Falldown is a game where you've to tilt your phone to make ball fall down
 Version: 0.2
-Release: 1
+Release: 2
 Group: Amusements/Games
 URL: https://github.com/walokra/falldown
 License: LICENSE
@@ -11,6 +11,9 @@ Description: |
   Falldown is a cartoon game where you have to tilt your phone to make ball fall down quickly with rhythmic music. Don’t get squashed!
 Configure: none
 Builder: qtc5
+QMakeOptions:
+- VERSION=%{version}
+- RELEASE=%{release}
 
 # This section specifies build dependencies that are resolved using pkgconfig.
 # This is the preferred way of specifying build dependencies for your package.
@@ -42,7 +45,5 @@ Files:
 - '%{_bindir}'
 - '%{_datadir}/%{name}'
 - '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
-# For more information about yaml and what's supported in Sailfish OS
-# build system, please see https://wiki.merproject.org/wiki/Spectacle
+- '%{_datadir}/icons/hicolor'
 

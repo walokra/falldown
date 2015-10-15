@@ -16,7 +16,7 @@ Name:       harbour-falldown
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Falldown is a game where you've to tilt your phone to make ball fall down
 Version:    0.2
-Release:    1
+Release:    2
 Group:      Amusements/Games
 License:    LICENSE
 URL:        https://github.com/walokra/falldown
@@ -48,7 +48,9 @@ Falldown is a cartoon game where you have to tilt your phone to make ball fall d
 # >> build pre
 # << build pre
 
-%qtc_qmake5 
+%qtc_qmake5  \
+    VERSION=%{version} \
+    RELEASE=%{release}
 
 %qtc_make %{?_smp_mflags}
 
@@ -75,6 +77,6 @@ desktop-file-install --delete-original       \
 %{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+%{_datadir}/icons/hicolor
 # >> files
 # << files
