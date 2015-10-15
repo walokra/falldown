@@ -39,9 +39,13 @@ Item {
         onCoverStatusChanged: {
             if (coverStatus === PageStatus.Activating) {
                 pause()
+                appActive = true
+                isMuted = true
                 soundtrack.stop()
             }
             if (coverStatus === PageStatus.Deactiving) {
+                appActive = false
+                isMuted = false
                 if (!settings.mute) {
                     soundtrack.play()
                 }
@@ -75,8 +79,8 @@ Item {
     property bool isWine: false
 
     function pause() {
+        timers.stopTimers()
         if (game) {
-            timers.stopTimers()
             game.gameState = game.paused
             pauseBtn.icon.source = Qt.resolvedUrl("../img/ui/play-btn.png")
 
@@ -86,12 +90,15 @@ Item {
                 isSmallerBall = true
             }
             if (slowTimeTimer.running) {
+                slowTimeInterval = slowTimeTimer.interval
                 isSlowTime = true
             }
             if (balloonTimer.running) {
+                balloonInterval = balloonTimer.interval
                 isBalloonTime = true
             }
             if (glueTimer.running) {
+                glueTimer = glueTimer.interval
                 isGlueTime = true
             }
             if (wineTimer.running) {
