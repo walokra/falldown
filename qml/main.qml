@@ -68,7 +68,7 @@ ApplicationWindow {
     property int smallBallInterval: 5000
     property int slowTimeInterval: 2125
     property int balloonInterval: 3000
-    property int glueInterval: 8000
+    property int glueInterval: 5000
     property int wineInterval: 5000
 
     cover: CoverPage { id: coverPage; }
