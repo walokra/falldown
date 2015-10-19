@@ -35,36 +35,17 @@ Item {
     }
 
     Connections {
-        target: coverPage
-        onCoverStatusChanged: {
-            if (coverStatus === PageStatus.Activating) {
-                pause()
-                appActive = true
-                isMuted = true
-                soundtrack.stop()
-            }
-            if (coverStatus === PageStatus.Deactiving) {
-                appActive = false
-                isMuted = false
-                if (!settings.mute) {
-                    soundtrack.play()
-                }
-            }
-        }
-    }
-
-    Connections {
         target: Qt.application
         onActiveChanged: {
             if (!Qt.application.active) {
-                pause()
                 appActive = false
                 isMuted = true
-                soundtrack.stop()
+                pause()
             }
             else {
                 appActive = true
                 isMuted = false
+
                 if (!settings.mute) {
                     soundtrack.play()
                 }
@@ -79,6 +60,7 @@ Item {
     property bool isWine: false
 
     function pause() {
+        soundtrack.stop()
         timers.stopTimers()
         if (game) {
             game.gameState = game.paused
@@ -122,35 +104,35 @@ Item {
         if (isSmallerBall) {
             smallerBallTimer.interval = smallBallInterval
             gameScene.smallerBall = true
-            smallerBallTimer.start()
+            smallerBallTimer.restart()
             isSmallerBall = false
             smallBallInterval = 5000
         }
         if (isSlowTime) {
             slowTimeTimer.interval = slowTimeInterval
             gameScene.slowTime = true
-            slowTimeTimer.start()
+            slowTimeTimer.restart()
             isSlowTime = false
             slowTimeInterval = 2125
         }
         if (isBalloonTime) {
             balloonTimer.interval = balloonInterval
             gameScene.balloon = true
-            balloonTimer.start()
+            balloonTimer.restart()
             isBalloonTime = false
             balloonInterval = 3000
         }
         if (isGlueTime) {
             glueTimer.interval = glueInterval
             gameScene.glue = true
-            glueTimer.start()
+            glueTimer.restart()
             isGlueTime = false
             glueInterval = 8000
         }
         if (isWine) {
             wineTimer.interval = wineInterval
             gameScene.wine = true
-            wineTimer.start()
+            wineTimer.restart()
             isWine = false
             wineInterval = 5000
         }

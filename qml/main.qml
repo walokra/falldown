@@ -270,7 +270,7 @@ ApplicationWindow {
             source: Qt.resolvedUrl("sounds/soundtrack.mp3")
             muted: isMuted || settings.mute
             loops: Audio.Infinite
-            autoPlay: true
+            autoPlay: false
         }
 
         function changeGravity(direction) {
@@ -302,7 +302,8 @@ ApplicationWindow {
         Keys.onReleased: changeGravity("reset");
 
         Accelerometer {
-            active: settings.control == 'tilt'
+            id: accelometer
+            active: appActive && settings.control == 'tilt'
 
             onReadingChanged: {
                 var inverted = gameScene.wine ? -1 : 1;
