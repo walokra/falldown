@@ -18,7 +18,7 @@ Summary:    Falldown is a game where you've to tilt your phone to make ball fall
 Version:    0.2.0
 Release:    3
 Group:      Amusements/Games
-License:    LICENSE
+License:    GPLv3
 URL:        https://github.com/walokra/falldown
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-falldown.yaml
